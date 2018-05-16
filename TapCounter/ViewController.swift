@@ -9,37 +9,33 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var counterLabel: UILabel!
     var counter : Int = 0
     var timer  = Timer()
-    // @IBOutlet var gesture: UILongPressGestureRecognizer!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-//        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(ViewController.touchDown(_:)))
-//        view.addGestureRecognizer(gesture)
-     
-       
-       
+        
+        //create the gesture and assign target and selector
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(ViewController.touchDown(_:)))
+        
+        //added the gesture to the recognizer
+        view.addGestureRecognizer(gesture)
+        
+        //setup
         counter = 0
         setLabel()
-        
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    @IBAction func tapPressed(_ sender: UIButton) {
-       
-       setLabel()
     }
     
-   
+
+    
+    @IBAction func tapPressed(_ sender: UIButton) {
+        setLabel()
+    }
+    
+    
     
     @IBAction func resetPressed(_ sender: UIBarButtonItem) {
         counter = 0
@@ -48,28 +44,27 @@ class ViewController: UIViewController {
     
     
     func setLabel() {
-         counter += 1
-         counterLabel.text = String(counter)
+        counter += 1
+        counterLabel.text = String(counter)
     }
     
-  
     
-//    @objc func touchDown(_ gestureRecognizer: UILongPressGestureRecognizer) {
-//
-//
-//        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
-//            if timer.isValid == false {
-//            timer  = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (timer) in
-//                self.setLabel()
-//            }
-//            }
-//        }
-//        if gestureRecognizer.state == .ended        {
-//            timer.invalidate()
-//        }
-//    }
-    @IBAction func holdGesture(_ sender: UILongPressGestureRecognizer) {
-        print("holdgesture")
+    //method called when the gesure is recognized
+    // the if condition checks for the .began and .changed states and
+    //fires a timer to loop through and increase the counter until
+    // the time is invalidated when gesture end is recognized.
+    @objc func touchDown(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        
+        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+            if timer.isValid == false {
+                timer  = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (timer) in
+                    self.setLabel()
+                }
+            }
+        }
+        if gestureRecognizer.state == .ended        {
+            timer.invalidate()
+        }
     }
     
     

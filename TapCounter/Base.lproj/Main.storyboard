@@ -36,7 +36,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="tapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KkH-gv-A87"/>
-                                    <outletCollection property="gestureRecognizers" destination="9Mn-MM-Bpv" appends="YES" id="i93-4T-4ib"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEK-zA-mgT">
@@ -60,15 +59,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="counterLabel" destination="HEK-zA-mgT" id="hyr-kf-kKu"/>
-                        <outlet property="gesture" destination="9Mn-MM-Bpv" id="tYJ-PJ-59U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="9Mn-MM-Bpv">
-                    <connections>
-                        <action selector="holdGesture:" destination="BYZ-38-t0r" id="S1P-Uh-UmN"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="949.60000000000002" y="-564.46776611694156"/>
         </scene>
